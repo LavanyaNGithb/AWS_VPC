@@ -1,9 +1,9 @@
 ---
- - name: Setup awsvpc Bastion Host
-   hosts: localhost
-   connection: local
-   gather_facts: no
-   tasks:
+  - name: Setup awsvpc Bastion Host
+    hosts: localhost
+    connection: local
+    gather_facts: no
+    tasks:
     - name: Import VPC setup Variable
       include_vars: vars/bastion_setup
 
@@ -30,10 +30,10 @@
         region: "{{region}}"
         vpc_id: "{{vpcid}}"
         rules:
-          -proto: tcp
-          from_port: 22
-          to_port: 22
-          cide_ip: "{{MYIP}}"
+          - proto: tcp
+            from_port: 22
+            to_port: 22
+            cidr_ip: "{{MYIP}}"
       register: BastionSG_out
 
     - name: Creating Bastion Host
